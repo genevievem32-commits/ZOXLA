@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZOXLA</title>
+<style>
+:root{
+  --navy:#071a3a;
+  --navy2:#0d2b5c;
+  --white:#fff;
+  --light:#f3f6fb;
+  --gray:#64748b;
+  --line:#dbe3ef;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--light);color:var(--navy)}
+header{position:sticky;top:0;z-index:10;background:var(--white);border-bottom:1px solid var(--line);height:72px;display:flex;align-items:center;padding:0 6%;gap:30px}
+.logo{font-size:28px;font-weight:900;letter-spacing:5px}
+nav{display:flex;gap:22px;margin-left:auto}
+nav button{border:0;background:none;color:var(--navy);font-weight:700;cursor:pointer;font-size:15px}
+nav button:hover{color:var(--navy2)}
+main{max-width:1150px;margin:auto;padding:30px 20px}
+.hero{background:var(--navy);color:white;border-radius:28px;padding:45px;margin-bottom:28px;min-height:260px;display:flex;align-items:center;justify-content:space-between;overflow:hidden}
+.hero h1{font-size:64px;margin:0 0 10px;letter-spacing:7px}
+.hero p{font-size:18px;max-width:500px;line-height:1.5;color:#dbe7ff}
+.hero .circle{width:230px;height:230px;border:2px solid white;border-radius:50%;opacity:.25}
+.section-title{display:flex;align-items:center;justify-content:space-between;margin:32px 0 15px}
+.section-title h2{margin:0;font-size:28px}
+.card{background:white;border:1px solid var(--line);border-radius:20px;padding:20px;margin-bottom:18px;box-shadow:0 8px 25px rgba(7,26,58,.05)}
+.composer textarea{width:100%;min-height:90px;border:1px solid var(--line);border-radius:14px;padding:14px;font-size:15px;resize:vertical;outline:none}
+.row{display:flex;gap:10px;align-items:center;margin-top:12px;flex-wrap:wrap}
+.btn{background:var(--navy);color:white;border:0;border-radius:12px;padding:11px 17px;font-weight:700;cursor:pointer}
+.btn.secondary{background:#e9eef7;color:var(--navy)}
+.post-head{display:flex;align-items:center;gap:12px}
+.avatar{width:44px;height:44px;border-radius:50%;background:var(--navy);color:white;display:grid;place-items:center;font-weight:800}
+.post-name{font-weight:800}.time{font-size:12px;color:var(--gray)}
+.post-text{line-height:1.55;margin:15px 0}
+.post-media{width:100%;max-height:500px;object-fit:cover;border-radius:16px;background:#e7edf6}
+.actions{display:flex;gap:10px;margin-top:12px}
+.action{border:0;background:#f1f5fa;color:var(--navy);padding:9px 13px;border-radius:10px;cursor:pointer;font-weight:700}
+.comments{margin-top:14px;border-top:1px solid var(--line);padding-top:12px}
+.comment{padding:8px 0;font-size:14px}.comment b{margin-right:5px}
+.comment-box{display:flex;gap:8px;margin-top:10px}.comment-box input{flex:1;border:1px solid var(--line);border-radius:10px;padding:10px}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.gallery img{width:100%;height:230px;object-fit:cover;border-radius:16px;cursor:pointer}
+.empty{color:var(--gray);padding:25px 0}
+input[type=file]{display:none}
+footer{text-align:center;color:var(--gray);padding:40px}
+@media(max-width:700px){
+ header{padding:0 18px;height:64px}nav{gap:8px}nav button{font-size:12px}.logo{font-size:21px}
+ .hero{padding:30px;min-height:220px}.hero h1{font-size:42px}.hero .circle{width:130px;height:130px}
+ .gallery{grid-template-columns:repeat(2,1fr)}.gallery img{height:160px}
+}
+
+.login-screen{position:fixed;inset:0;background:var(--navy);z-index:100;display:grid;place-items:center;padding:20px}
+.login-card{background:white;width:min(430px,100%);padding:38px;border-radius:26px;box-shadow:0 20px 60px rgba(0,0,0,.25);text-align:center}
+.login-logo{font-size:38px;font-weight:900;letter-spacing:8px;color:var(--navy)}
+.login-subtitle{color:var(--gray);line-height:1.5;margin:10px 0 25px}
+.login-input{width:100%;padding:13px 14px;border:1px solid var(--line);border-radius:12px;margin-bottom:12px;font-size:15px;outline:none}
+.login-input:focus{border-color:var(--navy2)}
+.login-btn{width:100%;font-size:15px}
+.login-note{font-size:12px;color:var(--gray);margin-top:15px}
+.profile-actions{margin-top:18px}
+</style>
+</head>
+<body>
+<div id="loginScreen" class="login-screen">
+  <div class="login-card">
+    <div class="login-logo">ZOXLA</div>
+    <p class="login-subtitle">Welcome back. Log in to your Zoxla account.</p>
+    <input id="loginName" class="login-input" type="text" placeholder="Username" maxlength="24">
+    <input id="loginPassword" class="login-input" type="password" placeholder="Password" maxlength="40">
+    <button class="btn login-btn" onclick="login()">Log in</button>
+    <p class="login-note">Demo login for V1 — your account is saved on this browser.</p>
+  </div>
+</div>
+
+<header>
+  <div class="logo">ZOXLA</div>
+  <nav>
+    <button onclick="show('home')">Home</button>
+    <button onclick="show('feed')">Feed</button>
+    <button onclick="show('gallery')">Gallery</button>
+    <button onclick="show('profile')">Profile</button>
+  </nav>
+</header>
+
+<main>
+  <section id="home">
+    <div class="hero">
+      <div>
+        <h1>ZOXLA</h1>
+        <p>Your place to share what's happening. Post moments, photos and videos, and see what everyone is talking about.</p>
+        <button class="btn" onclick="show('feed')">Enter Zoxla</button>
+      </div>
+      <div class="circle"></div>
+    </div>
+    <div class="section-title"><h2>Latest on Zoxla</h2></div>
+    <div class="card"><b>Welcome to Zoxla.</b><p class="post-text">This is your new social space. Create a post and try the likes and comments.</p></div>
+  </section>
+
+  <section id="feed" style="display:none">
+    <div class="section-title"><h2>Your Feed</h2></div>
+    <div class="card composer">
+      <b>Create a post</b>
+      <textarea id="postText" placeholder="What's going on?"></textarea>
+      <div class="row">
+        <label class="btn secondary" for="mediaInput">Add photo/video</label>
+        <input id="mediaInput" type="file" accept="image/*,video/*" onchange="previewMedia()">
+        <button class="btn" onclick="addPost()">Post</button>
+      </div>
+      <div id="preview"></div>
+    </div>
+    <div id="posts"></div>
+  </section>
+
+  <section id="gallery" style="display:none">
+    <div class="section-title"><h2>Photo Gallery</h2><label class="btn" for="galleryInput">Add photo</label></div>
+    <input id="galleryInput" type="file" accept="image/*" multiple onchange="addGallery(event)">
+    <div id="galleryGrid" class="gallery"></div>
+  </section>
+
+  <section id="profile" style="display:none">
+    <div class="card">
+      <div class="post-head"><div id="profileAvatar" class="avatar">Z</div><div><div id="profileName" class="post-name">Your Zoxla Profile</div><div class="time">Zoxla member</div></div></div>
+      <p class="post-text">This is your Zoxla profile. Your username is saved on this browser for now.</p>
+      <div class="row profile-actions">
+        <button class="btn" onclick="show('feed')">Make a post</button>
+        <button class="btn secondary" onclick="logout()">Log out</button>
+      </div>
+    </div>
+  </section>
+</main>
+<footer>ZOXLA — share your world.</footer>
+
+<script>
+let posts=[
+ {name:"Zoxla Team",text:"Welcome to Zoxla! Tell everyone what's going on.",likes:12,comments:["This looks so good!"]}
+];
+let selectedMedia=null;
+let galleryItems=JSON.parse(localStorage.getItem("zoxlaGallery")||"[]");
+
+
+let currentUser = localStorage.getItem("zoxlaUser") || "";
+
+function login(){
+ const name=document.getElementById("loginName").value.trim();
+ const password=document.getElementById("loginPassword").value;
+ if(name.length<2 || password.length<4){
+   alert("Enter a username and a password with at least 4 characters.");
+   return;
+ }
+ currentUser=name;
+ localStorage.setItem("zoxlaUser",name);
+ document.getElementById("loginScreen").style.display="none";
+ updateProfile();
+}
+function logout(){
+ localStorage.removeItem("zoxlaUser");
+ currentUser="";
+ document.getElementById("loginName").value="";
+ document.getElementById("loginPassword").value="";
+ document.getElementById("loginScreen").style.display="grid";
+}
+function updateProfile(){
+ const name=currentUser||"User";
+ document.getElementById("profileName").textContent=name;
+ document.getElementById("profileAvatar").textContent=name.charAt(0).toUpperCase();
+}
+
+function show(id){
+ ["home","feed","gallery","profile"].forEach(x=>document.getElementById(x).style.display=x===id?"block":"none");
+ window.scrollTo({top:0,behavior:"smooth"});
+ if(id==="feed") renderPosts();
+ if(id==="gallery") renderGallery();
+}
+function previewMedia(){
+ const f=document.getElementById("mediaInput").files[0];
+ if(!f)return;
+ selectedMedia=f;
+ const url=URL.createObjectURL(f);
+ document.getElementById("preview").innerHTML=f.type.startsWith("video/")?
+ `<video class="post-media" controls style="margin-top:12px;max-height:250px" src="${url}"></video>`:
+ `<img class="post-media" style="margin-top:12px;max-height:250px" src="${url}">`;
+}
+function addPost(){
+ const text=document.getElementById("postText").value.trim();
+ if(!text && !selectedMedia){alert("Write something or add a photo/video.");return}
+ let media=null;
+ if(selectedMedia) media={url:URL.createObjectURL(selectedMedia),type:selectedMedia.type};
+ posts.unshift({name:currentUser||"You",text,likes:0,comments:[],media});
+ try{localStorage.setItem("zoxlaPosts",JSON.stringify(posts.map(p=>({...p,media:null}))));}catch(err){}
+ document.getElementById("postText").value="";
+ document.getElementById("mediaInput").value="";
+ selectedMedia=null;document.getElementById("preview").innerHTML="";
+ renderPosts();
+}
+function renderPosts(){
+ const box=document.getElementById("posts");
+ box.innerHTML="";
+ posts.forEach((p,i)=>{
+   const media=p.media ? (p.media.type.startsWith("video/")?
+   `<video class="post-media" controls src="${p.media.url}"></video>`:
+   `<img class="post-media" src="${p.media.url}">`):"";
+   const comments=p.comments.map(c=>`<div class="comment"><b>${escapeHtml(c.name||"User")}:</b>${escapeHtml(c.text||c)}</div>`).join("");
+   box.innerHTML+=`<article class="card">
+    <div class="post-head"><div class="avatar">${p.name[0]}</div><div><div class="post-name">${escapeHtml(p.name)}</div><div class="time">Just now</div></div></div>
+    <div class="post-text">${escapeHtml(p.text)}</div>${media}
+    <div class="actions"><button class="action" onclick="likePost(${i})">♥ Like <span>${p.likes}</span></button><button class="action" onclick="focusComment(${i})">💬 Comment</button></div>
+    <div class="comments">${comments||'<div class="time">No comments yet.</div>'}
+      <div class="comment-box"><input id="comment-${i}" placeholder="Write a comment..."><button class="btn" onclick="commentPost(${i})">Send</button></div>
+    </div>
+   </article>`;
+ });
+}
+function likePost(i){posts[i].likes++;renderPosts()}
+function commentPost(i){
+ const input=document.getElementById("comment-"+i), text=input.value.trim();if(!text)return;
+ posts[i].comments.push({name:currentUser||"You",text});input.value="";renderPosts();
+}
+function focusComment(i){document.getElementById("comment-"+i)?.focus()}
+function addGallery(e){
+ [...e.target.files].forEach(f=>{if(f.type.startsWith("image/"))galleryItems.push(URL.createObjectURL(f))});
+ try{localStorage.setItem("zoxlaGallery",JSON.stringify(galleryItems));}catch(err){}
+ renderGallery();e.target.value="";
+}
+function renderGallery(){
+ const g=document.getElementById("galleryGrid");
+ if(!galleryItems.length){g.innerHTML='<div class="empty">Your photo gallery is empty. Add your first photo.</div>';return}
+ g.innerHTML=galleryItems.map(u=>`<img src="${u}" onclick="window.open(this.src,'_blank')">`).join("");
+}
+function escapeHtml(s){return String(s||"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"}[m]))}
+if(currentUser){
+ document.getElementById("loginScreen").style.display="none";
+ updateProfile();
+}
+renderPosts();renderGallery();
+</script>
+</body>
+</html>
