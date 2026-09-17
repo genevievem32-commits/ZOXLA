@@ -1,0 +1,1922 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZOXLA.com</title>
+
+<style>
+:root{
+  --navy:#071a3a;
+  --navy2:#0d2b5c;
+  --white:#fff;
+  --light:#f3f6fb;
+  --gray:#64748b;
+  --line:#dbe3ef;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:var(--light);
+  color:var(--navy);
+}
+
+header{
+  position:sticky;
+  top:0;
+  z-index:10;
+  background:var(--white);
+  border-bottom:1px solid var(--line);
+  height:72px;
+  display:flex;
+  align-items:center;
+  padding:0 6%;
+  gap:30px;
+}
+
+.logo{
+  font-size:28px;
+  font-weight:900;
+  letter-spacing:5px;
+}
+
+nav{
+  display:flex;
+  gap:22px;
+  margin-left:auto;
+}
+
+nav button{
+  border:0;
+  background:none;
+  color:var(--navy);
+  font-weight:700;
+  cursor:pointer;
+  font-size:15px;
+}
+
+nav button:hover{
+  color:var(--navy2);
+}
+
+main{
+  max-width:1150px;
+  margin:auto;
+  padding:30px 20px;
+}
+
+.hero{
+  background:var(--navy);
+  color:white;
+  border-radius:28px;
+  padding:45px;
+  margin-bottom:28px;
+  min-height:260px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  overflow:hidden;
+}
+
+.hero h1{
+  font-size:64px;
+  margin:0 0 10px;
+  letter-spacing:7px;
+}
+
+.hero p{
+  font-size:18px;
+  max-width:500px;
+  line-height:1.5;
+  color:#dbe7ff;
+}
+
+.hero .circle{
+  width:230px;
+  height:230px;
+  border:2px solid white;
+  border-radius:50%;
+  opacity:.25;
+}
+
+.section-title{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin:32px 0 15px;
+}
+
+.section-title h2{
+  margin:0;
+  font-size:28px;
+}
+
+.card{
+  background:white;
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:20px;
+  margin-bottom:18px;
+  box-shadow:0 8px 25px rgba(7,26,58,.05);
+}
+
+.composer textarea{
+  width:100%;
+  min-height:90px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:14px;
+  font-size:15px;
+  resize:vertical;
+  outline:none;
+}
+
+.row{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  margin-top:12px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  background:var(--navy);
+  color:white;
+  border:0;
+  border-radius:12px;
+  padding:11px 17px;
+  font-weight:700;
+  cursor:pointer;
+}
+
+.btn.secondary{
+  background:#e9eef7;
+  color:var(--navy);
+}
+
+.post-head{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.avatar{
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  background:var(--navy);
+  color:white;
+  display:grid;
+  place-items:center;
+  font-weight:800;
+}
+
+.post-name{
+  font-weight:800;
+}
+
+.time{
+  font-size:12px;
+  color:var(--gray);
+}
+
+.post-text{
+  line-height:1.55;
+  margin:15px 0;
+  white-space:pre-wrap;
+}
+
+.post-media{
+  width:100%;
+  max-height:500px;
+  object-fit:cover;
+  border-radius:16px;
+  background:#e7edf6;
+}
+
+.actions{
+  display:flex;
+  gap:10px;
+  margin-top:12px;
+}
+
+.action{
+  border:0;
+  background:#f1f5fa;
+  color:var(--navy);
+  padding:9px 13px;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:700;
+}
+
+.comments{
+  margin-top:14px;
+  border-top:1px solid var(--line);
+  padding-top:12px;
+}
+
+.comment{
+  padding:8px 0;
+  font-size:14px;
+}
+
+.comment b{
+  margin-right:5px;
+}
+
+.comment-time{
+  color:var(--gray);
+  font-size:11px;
+  margin-left:5px;
+}
+
+.comment-box{
+  display:flex;
+  gap:8px;
+  margin-top:10px;
+}
+
+.comment-box input{
+  flex:1;
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:10px;
+}
+
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+}
+
+.gallery img{
+  width:100%;
+  height:230px;
+  object-fit:cover;
+  border-radius:16px;
+  cursor:pointer;
+}
+
+.empty{
+  color:var(--gray);
+  padding:25px 0;
+}
+
+input[type=file]{
+  display:none;
+}
+
+footer{
+  text-align:center;
+  color:var(--gray);
+  padding:40px;
+}
+
+.login-screen{
+  position:fixed;
+  inset:0;
+  background:var(--navy);
+  z-index:100;
+  display:grid;
+  place-items:center;
+  padding:20px;
+}
+
+.login-card{
+  background:white;
+  width:min(430px,100%);
+  padding:38px;
+  border-radius:26px;
+  box-shadow:0 20px 60px rgba(0,0,0,.25);
+  text-align:center;
+}
+
+.login-logo{
+  font-size:38px;
+  font-weight:900;
+  letter-spacing:8px;
+  color:var(--navy);
+}
+
+.login-subtitle{
+  color:var(--gray);
+  line-height:1.5;
+  margin:10px 0 25px;
+}
+
+.login-input{
+  width:100%;
+  padding:13px 14px;
+  border:1px solid var(--line);
+  border-radius:12px;
+  margin-bottom:12px;
+  font-size:15px;
+  outline:none;
+}
+
+.login-input:focus{
+  border-color:var(--navy2);
+}
+
+.login-btn{
+  width:100%;
+  font-size:15px;
+}
+
+.login-note{
+  font-size:12px;
+  color:var(--gray);
+  margin-top:15px;
+}
+
+.profile-actions{
+  margin-top:18px;
+}
+
+@media(max-width:700px){
+  header{
+    padding:0 18px;
+    height:64px;
+  }
+
+  nav{
+    gap:8px;
+  }
+
+  nav button{
+    font-size:12px;
+  }
+
+  .logo{
+    font-size:21px;
+  }
+
+  .hero{
+    padding:30px;
+    min-height:220px;
+  }
+
+  .hero h1{
+    font-size:42px;
+  }
+
+  .hero .circle{
+    width:130px;
+    height:130px;
+  }
+
+  .gallery{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .gallery img{
+    height:160px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- LOGIN -->
+<div id="loginScreen" class="login-screen">
+  <div class="login-card">
+
+    <div class="login-logo">ZOXLA</div>
+
+    <p class="login-subtitle">
+      Welcome back. Log in to your Zoxla account.
+    </p>
+
+    <input
+      id="loginName"
+      class="login-input"
+      type="text"
+      placeholder="Username"
+      maxlength="24"
+    >
+
+    <input
+      id="loginPassword"
+      class="login-input"
+      type="password"
+      placeholder="Password"
+      maxlength="40"
+    >
+
+    <button class="btn login-btn" onclick="login()">
+      Log in
+    </button>
+
+    <p class="login-note">
+      Demo login for V1 — your account is saved on this browser.
+    </p>
+
+  </div>
+</div>
+
+
+<!-- HEADER -->
+<header>
+
+  <div class="logo">
+    ZOXLA
+  </div>
+
+  <nav>
+    <button onclick="show('home')">Home</button>
+    <button onclick="show('feed')">Feed</button>
+    <button onclick="show('gallery')">Gallery</button>
+    <button onclick="show('profile')">Profile</button>
+  </nav>
+
+</header>
+
+
+<main>
+
+  <!-- HOME -->
+  <section id="home">
+
+    <div class="hero">
+
+      <div>
+
+        <h1>ZOXLA</h1>
+
+        <p>
+          Your place to share what's happening.
+          Post moments, photos and videos, and see what everyone is talking about.
+        </p>
+
+        <button class="btn" onclick="show('feed')">
+          Enter Zoxla
+        </button>
+
+      </div>
+
+      <div class="circle"></div>
+
+    </div>
+
+
+    <div class="section-title">
+      <h2>Latest on Zoxla</h2>
+    </div>
+
+    <div class="card">
+
+      <b>Welcome to Zoxla.</b>
+
+      <p class="post-text">
+        This is your new social space. Create a post and try the likes and comments.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- FEED -->
+  <section id="feed" style="display:none">
+
+    <div class="section-title">
+      <h2>Your Feed</h2>
+    </div>
+
+
+    <!-- CREATE POST -->
+    <div class="card composer">
+
+      <b>Create a post</b>
+
+      <textarea
+        id="postText"
+        placeholder="What's going on?"
+      ></textarea>
+
+
+      <div class="row">
+
+        <label
+          class="btn secondary"
+          for="mediaInput"
+        >
+          Add photo/video
+        </label>
+
+        <input
+          id="mediaInput"
+          type="file"
+          accept="image/*,video/*"
+          onchange="previewMedia()"
+        >
+
+        <button
+          class="btn"
+          onclick="addPost()"
+        >
+          Post
+        </button>
+
+      </div>
+
+
+      <div id="preview"></div>
+
+    </div>
+
+
+    <div id="posts"></div>
+
+  </section>
+
+
+  <!-- GALLERY -->
+  <section id="gallery" style="display:none">
+
+    <div class="section-title">
+
+      <h2>Photo Gallery</h2>
+
+      <label
+        class="btn"
+        for="galleryInput"
+      >
+        Add photo
+      </label>
+
+    </div>
+
+
+    <input
+      id="galleryInput"
+      type="file"
+      accept="image/*"
+      multiple
+      onchange="addGallery(event)"
+    >
+
+
+    <div
+      id="galleryGrid"
+      class="gallery"
+    ></div>
+
+  </section>
+
+
+  <!-- PROFILE -->
+  <section id="profile" style="display:none">
+
+    <div class="card">
+
+      <div class="post-head">
+
+        <div
+          id="profileAvatar"
+          class="avatar"
+        >
+          Z
+        </div>
+
+        <div>
+
+          <div
+            id="profileName"
+            class="post-name"
+          >
+            Your Zoxla Profile
+          </div>
+
+          <div class="time">
+            Zoxla member
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <p class="post-text">
+        This is your Zoxla profile.
+        Your username is saved on this browser for now.
+      </p>
+
+
+      <div class="row profile-actions">
+
+        <button
+          class="btn"
+          onclick="show('feed')"
+        >
+          Make a post
+        </button>
+
+        <button
+          class="btn secondary"
+          onclick="logout()"
+        >
+          Log out
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<footer>
+  ZOXLA — share your world.
+</footer>
+
+
+<!-- SUPABASE -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+
+const SUPABASE_URL =
+  "https://lkyhvuspzneuotmjhsdf.supabase.co";
+
+const SUPABASE_PUBLISHABLE_KEY =
+  "sb_publishable_FGJ4mIM2hWDsSh--6dW0MQ_D8xY2h47";
+
+const supabaseClient =
+  window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+  );
+
+
+let posts = [];
+
+let selectedMedia = null;
+
+let galleryItems = [];
+
+let currentUser =
+  localStorage.getItem("zoxlaUser") || "";
+
+
+/* =========================
+   LOGIN
+========================= */
+
+function login(){
+
+  const name =
+    document.getElementById("loginName").value.trim();
+
+  const password =
+    document.getElementById("loginPassword").value;
+
+
+  if(
+    name.length < 2 ||
+    password.length < 4
+  ){
+
+    alert(
+      "Enter a username and a password with at least 4 characters."
+    );
+
+    return;
+  }
+
+
+  currentUser = name;
+
+  localStorage.setItem(
+    "zoxlaUser",
+    name
+  );
+
+
+  document.getElementById(
+    "loginScreen"
+  ).style.display = "none";
+
+
+  updateProfile();
+
+  loadOnlinePosts();
+
+  renderGallery();
+}
+
+
+function logout(){
+
+  localStorage.removeItem(
+    "zoxlaUser"
+  );
+
+  currentUser = "";
+
+
+  document.getElementById(
+    "loginName"
+  ).value = "";
+
+  document.getElementById(
+    "loginPassword"
+  ).value = "";
+
+
+  document.getElementById(
+    "loginScreen"
+  ).style.display = "grid";
+}
+
+
+function updateProfile(){
+
+  const name =
+    currentUser || "User";
+
+
+  document.getElementById(
+    "profileName"
+  ).textContent = name;
+
+
+  document.getElementById(
+    "profileAvatar"
+  ).textContent =
+    name.charAt(0).toUpperCase();
+}
+
+
+/* =========================
+   PAGE NAVIGATION
+========================= */
+
+function show(id){
+
+  [
+    "home",
+    "feed",
+    "gallery",
+    "profile"
+  ].forEach(function(x){
+
+    document.getElementById(x).style.display =
+      x === id ? "block" : "none";
+
+  });
+
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+
+  if(id === "feed"){
+
+    loadOnlinePosts();
+
+  }
+
+
+  if(id === "gallery"){
+
+    renderGallery();
+
+  }
+
+}
+
+
+/* =========================
+   MEDIA PREVIEW
+========================= */
+
+function previewMedia(){
+
+  const file =
+    document.getElementById(
+      "mediaInput"
+    ).files[0];
+
+
+  if(!file){
+
+    selectedMedia = null;
+
+    document.getElementById(
+      "preview"
+    ).innerHTML = "";
+
+    return;
+  }
+
+
+  selectedMedia = file;
+
+
+  const url =
+    URL.createObjectURL(file);
+
+
+  if(file.type.startsWith("video/")){
+
+    document.getElementById(
+      "preview"
+    ).innerHTML =
+
+      `<video
+        class="post-media"
+        controls
+        style="margin-top:12px;max-height:250px"
+        src="${url}">
+      </video>`;
+
+  }else{
+
+    document.getElementById(
+      "preview"
+    ).innerHTML =
+
+      `<img
+        class="post-media"
+        style="margin-top:12px;max-height:250px"
+        src="${url}"
+        alt="Post preview">`;
+
+  }
+
+}
+
+
+/* =========================
+   CREATE ONLINE POST
+========================= */
+
+async function addPost(){
+
+  const text =
+    document.getElementById(
+      "postText"
+    ).value.trim();
+
+
+  if(!text && !selectedMedia){
+
+    alert(
+      "Write something or add a photo/video."
+    );
+
+    return;
+  }
+
+
+  let mediaUrl = null;
+
+  let mediaType = null;
+
+
+  /* UPLOAD PHOTO OR VIDEO */
+
+  if(selectedMedia){
+
+    const safeName =
+      selectedMedia.name.replace(
+        /[^a-zA-Z0-9._-]/g,
+        "_"
+      );
+
+
+    const path =
+      `${Date.now()}-${Math.random()
+        .toString(36)
+        .slice(2)}-${safeName}`;
+
+
+    const {
+      error: uploadError
+    } =
+      await supabaseClient
+        .storage
+        .from("post-media")
+        .upload(
+          path,
+          selectedMedia,
+          {
+            contentType:
+              selectedMedia.type,
+
+            upsert:false
+          }
+        );
+
+
+    if(uploadError){
+
+      console.error(uploadError);
+
+      alert(
+        "The photo/video could not be uploaded. Check your Supabase Storage policies."
+      );
+
+      return;
+    }
+
+
+    const {
+      data:urlData
+    } =
+      supabaseClient
+        .storage
+        .from("post-media")
+        .getPublicUrl(path);
+
+
+    mediaUrl =
+      urlData?.publicUrl || null;
+
+
+    mediaType =
+      selectedMedia.type;
+
+
+    if(!mediaUrl){
+
+      alert(
+        "The file uploaded, but its public URL could not be created."
+      );
+
+      return;
+    }
+
+  }
+
+
+  /* SAVE POST */
+
+  const {
+    error
+  } =
+    await supabaseClient
+      .from("posts")
+      .insert([
+
+        {
+          content:text,
+          media_url:mediaUrl,
+          media_type:mediaType
+        }
+
+      ]);
+
+
+  if(error){
+
+    console.error(error);
+
+    alert(
+      "The post could not be saved online. Check your Supabase posts policies."
+    );
+
+    return;
+  }
+
+
+  /* CLEAR COMPOSER */
+
+  document.getElementById(
+    "postText"
+  ).value = "";
+
+
+  document.getElementById(
+    "mediaInput"
+  ).value = "";
+
+
+  document.getElementById(
+    "preview"
+  ).innerHTML = "";
+
+
+  selectedMedia = null;
+
+
+  await loadOnlinePosts();
+
+}
+
+
+/* =========================
+   LOAD POSTS + COMMENTS
+========================= */
+
+async function loadOnlinePosts(){
+
+  const {
+    data:postData,
+    error:postError
+  } =
+    await supabaseClient
+      .from("posts")
+      .select("*")
+      .order(
+        "created_at",
+        {
+          ascending:false
+        }
+      );
+
+
+  if(postError){
+
+    console.error(postError);
+
+    renderPosts();
+
+    return;
+  }
+
+
+  const {
+    data:commentData,
+    error:commentError
+  } =
+    await supabaseClient
+      .from("comments")
+      .select("*")
+      .order(
+        "created_at",
+        {
+          ascending:true
+        }
+      );
+
+
+  if(commentError){
+
+    console.error(commentError);
+
+  }
+
+
+  const commentsByPost = {};
+
+
+  (commentData || []).forEach(
+    function(comment){
+
+      if(!commentsByPost[comment.post_id]){
+
+        commentsByPost[
+          comment.post_id
+        ] = [];
+
+      }
+
+
+      commentsByPost[
+        comment.post_id
+      ].push({
+
+        id:comment.id,
+
+        name:
+          comment.user_name ||
+          "User",
+
+        text:
+          comment.content ||
+          "",
+
+        created_at:
+          comment.created_at
+
+      });
+
+    }
+  );
+
+
+  posts =
+    (postData || []).map(
+      function(post){
+
+        return {
+
+          id:post.id,
+
+          name:
+            post.user_name ||
+            "ZOXLA",
+
+          text:
+            post.content ||
+            "",
+
+          created_at:
+            post.created_at,
+
+          likes:
+            0,
+
+          comments:
+            commentsByPost[post.id] ||
+            [],
+
+          media:
+            post.media_url
+
+              ? {
+
+                  url:
+                    post.media_url,
+
+                  type:
+                    post.media_type ||
+                    "image/*"
+
+                }
+
+              : null
+
+        };
+
+      }
+    );
+
+
+  renderPosts();
+
+}
+
+
+/* =========================
+   TIME
+========================= */
+
+function timeAgo(timestamp){
+
+  if(!timestamp){
+
+    return "Just now";
+
+  }
+
+
+  const minutes =
+    Math.max(
+      0,
+      Math.floor(
+        (
+          Date.now() -
+          new Date(timestamp).getTime()
+        ) / 60000
+      )
+    );
+
+
+  if(minutes < 1){
+
+    return "Just now";
+
+  }
+
+
+  if(minutes < 60){
+
+    return `${minutes} minute${
+      minutes === 1 ? "" : "s"
+    } ago`;
+
+  }
+
+
+  const hours =
+    Math.floor(
+      minutes / 60
+    );
+
+
+  if(hours < 24){
+
+    return `${hours} hour${
+      hours === 1 ? "" : "s"
+    } ago`;
+
+  }
+
+
+  const days =
+    Math.floor(
+      hours / 24
+    );
+
+
+  if(days < 7){
+
+    return `${days} day${
+      days === 1 ? "" : "s"
+    } ago`;
+
+  }
+
+
+  return new Date(
+    timestamp
+  ).toLocaleDateString();
+
+}
+
+
+/* =========================
+   RENDER POSTS
+========================= */
+
+function renderPosts(){
+
+  const box =
+    document.getElementById(
+      "posts"
+    );
+
+
+  box.innerHTML = "";
+
+
+  if(!posts.length){
+
+    box.innerHTML =
+      `<div class="card">
+        <div class="empty">
+          No posts yet. Be the first to post!
+        </div>
+      </div>`;
+
+    return;
+
+  }
+
+
+  posts.forEach(
+    function(post,index){
+
+      let media = "";
+
+
+      if(post.media){
+
+        if(
+          post.media.type.startsWith(
+            "video/"
+          )
+        ){
+
+          media =
+
+            `<video
+              class="post-media"
+              controls
+              src="${escapeHtml(
+                post.media.url
+              )}">
+            </video>`;
+
+        }else{
+
+          media =
+
+            `<img
+              class="post-media"
+              src="${escapeHtml(
+                post.media.url
+              )}"
+              alt="ZOXLA post photo">`;
+
+        }
+
+      }
+
+
+      const comments =
+        post.comments
+          .map(
+            function(comment){
+
+              return `
+
+                <div class="comment">
+
+                  <b>
+                    ${escapeHtml(
+                      comment.name ||
+                      "User"
+                    )}:
+                  </b>
+
+                  ${escapeHtml(
+                    comment.text ||
+                    ""
+                  )}
+
+                  <span class="comment-time">
+                    ${timeAgo(
+                      comment.created_at
+                    )}
+                  </span>
+
+                </div>
+
+              `;
+
+            }
+          )
+          .join("");
+
+
+      box.innerHTML +=
+
+        `<article class="card">
+
+          <div class="post-head">
+
+            <div class="avatar">
+              ${escapeHtml(
+                (post.name || "Z")
+                  .charAt(0)
+                  .toUpperCase()
+              )}
+            </div>
+
+            <div>
+
+              <div class="post-name">
+                ${escapeHtml(
+                  post.name ||
+                  "ZOXLA"
+                )}
+              </div>
+
+              <div class="time">
+                ${timeAgo(
+                  post.created_at
+                )}
+              </div>
+
+            </div>
+
+          </div>
+
+
+          ${
+            post.text
+              ? `<div class="post-text">
+                  ${escapeHtml(
+                    post.text
+                  )}
+                </div>`
+              : ""
+          }
+
+
+          ${media}
+
+
+          <div class="actions">
+
+            <button
+              class="action"
+              onclick="likePost(${index})"
+            >
+              Like
+              <span>
+                ${post.likes || 0}
+              </span>
+            </button>
+
+
+            <button
+              class="action"
+              onclick="focusComment(${index})"
+            >
+              Comment
+            </button>
+
+          </div>
+
+
+          <div class="comments">
+
+            ${
+              comments ||
+              '<div class="time">No comments yet.</div>'
+            }
+
+
+            <div class="comment-box">
+
+              <input
+                id="comment-${index}"
+                placeholder="Write a comment..."
+                maxlength="500"
+                onkeydown="if(event.key==='Enter') commentPost(${index})"
+              >
+
+
+              <button
+                class="btn"
+                onclick="commentPost(${index})"
+              >
+                Send
+              </button>
+
+            </div>
+
+          </div>
+
+        </article>`;
+
+    }
+  );
+
+}
+
+
+/* =========================
+   LIKES
+========================= */
+
+function likePost(index){
+
+  if(!posts[index]) return;
+
+
+  posts[index].likes =
+    (posts[index].likes || 0) + 1;
+
+
+  renderPosts();
+
+}
+
+
+/* =========================
+   ONLINE COMMENTS
+========================= */
+
+async function commentPost(index){
+
+  if(!posts[index]) return;
+
+
+  const input =
+    document.getElementById(
+      "comment-" + index
+    );
+
+
+  if(!input) return;
+
+
+  const text =
+    input.value.trim();
+
+
+  if(!text) return;
+
+
+  if(!posts[index].id){
+
+    alert(
+      "This post cannot receive an online comment."
+    );
+
+    return;
+  }
+
+
+  const {
+    error
+  } =
+    await supabaseClient
+      .from("comments")
+      .insert([
+
+        {
+          post_id:
+            posts[index].id,
+
+          user_name:
+            currentUser ||
+            "You",
+
+          content:
+            text
+        }
+
+      ]);
+
+
+  if(error){
+
+    console.error(error);
+
+    alert(
+      "The comment could not be saved online. Check your Supabase comments policies."
+    );
+
+    return;
+  }
+
+
+  input.value = "";
+
+
+  await loadOnlinePosts();
+
+}
+
+
+/* =========================
+   COMMENT FOCUS
+========================= */
+
+function focusComment(index){
+
+  const input =
+    document.getElementById(
+      "comment-" + index
+    );
+
+
+  if(input){
+
+    input.focus();
+
+  }
+
+}
+
+
+/* =========================
+   ONLINE GALLERY
+========================= */
+
+async function addGallery(event){
+
+  const files =
+    [
+      ...event.target.files
+    ].filter(
+      function(file){
+
+        return file.type.startsWith(
+          "image/"
+        );
+
+      }
+    );
+
+
+  if(!files.length){
+
+    event.target.value = "";
+
+    return;
+
+  }
+
+
+  const gallery =
+    document.getElementById(
+      "galleryGrid"
+    );
+
+
+  gallery.innerHTML =
+    '<div class="empty">Uploading photo(s)...</div>';
+
+
+  for(
+    const file of files
+  ){
+
+    const safeName =
+      file.name.replace(
+        /[^a-zA-Z0-9._-]/g,
+        "_"
+      );
+
+
+    const path =
+      `${Date.now()}-${Math.random()
+        .toString(36)
+        .slice(2)}-${safeName}`;
+
+
+    const {
+      error:uploadError
+    } =
+      await supabaseClient
+        .storage
+        .from("gallery")
+        .upload(
+          path,
+          file,
+          {
+            contentType:
+              file.type,
+
+            upsert:false
+          }
+        );
+
+
+    if(uploadError){
+
+      console.error(uploadError);
+
+      alert(
+        "A photo could not be uploaded. Check your Supabase Storage policies."
+      );
+
+      continue;
+
+    }
+
+
+    const {
+      data:urlData
+    } =
+      supabaseClient
+        .storage
+        .from("gallery")
+        .getPublicUrl(path);
+
+
+    const publicUrl =
+      urlData?.publicUrl;
+
+
+    if(!publicUrl){
+
+      alert(
+        "The photo uploaded, but its public URL could not be created."
+      );
+
+      continue;
+
+    }
+
+
+    const {
+      error:dbError
+    } =
+      await supabaseClient
+        .from("gallery")
+        .insert([
+
+          {
+            image_url:
+              publicUrl
+          }
+
+        ]);
+
+
+    if(dbError){
+
+      console.error(dbError);
+
+      alert(
+        "The photo uploaded, but it could not be added to the gallery database."
+      );
+
+    }
+
+  }
+
+
+  event.target.value = "";
+
+
+  await renderGallery();
+
+}
+
+
+/* =========================
+   LOAD GALLERY
+========================= */
+
+async function renderGallery(){
+
+  const gallery =
+    document.getElementById(
+      "galleryGrid"
+    );
+
+
+  gallery.innerHTML =
+    '<div class="empty">Loading gallery...</div>';
+
+
+  const {
+    data,
+    error
+  } =
+    await supabaseClient
+      .from("gallery")
+      .select("*")
+      .order(
+        "created_at",
+        {
+          ascending:false
+        }
+      );
+
+
+  if(error){
+
+    console.error(error);
+
+    gallery.innerHTML =
+
+      `<div class="empty">
+        Could not load the online gallery.
+        Check your Supabase gallery table and policies.
+      </div>`;
+
+    return;
+
+  }
+
+
+  galleryItems =
+    (data || [])
+      .map(
+        function(item){
+
+          return item.image_url;
+
+        }
+      )
+      .filter(Boolean);
+
+
+  if(!galleryItems.length){
+
+    gallery.innerHTML =
+
+      `<div class="empty">
+        Your photo gallery is empty.
+        Add your first photo.
+      </div>`;
+
+    return;
+
+  }
+
+
+  gallery.innerHTML =
+    galleryItems
+      .map(
+        function(url){
+
+          return `
+
+            <img
+              src="${escapeHtml(url)}"
+              onclick="window.open(this.src,'_blank')"
+              alt="ZOXLA gallery photo">
+
+          `;
+
+        }
+      )
+      .join("");
+
+}
+
+
+/* =========================
+   SECURITY / HTML ESCAPING
+========================= */
+
+function escapeHtml(value){
+
+  return String(
+    value || ""
+  ).replace(
+    /[&<>"']/g,
+    function(match){
+
+      return {
+
+        "&":"&amp;",
+
+        "<":"&lt;",
+
+        ">":"&gt;",
+
+        '"':"&quot;",
+
+        "'":"&#039;"
+
+      }[match];
+
+    }
+  );
+
+}
+
+
+/* =========================
+   START ZOXLA
+========================= */
+
+if(currentUser){
+
+  document.getElementById(
+    "loginScreen"
+  ).style.display = "none";
+
+
+  updateProfile();
+
+}
+
+
+loadOnlinePosts();
+
+renderGallery();
+
+
+/*
+  Refresh post timestamps every minute.
+  Also reload online posts so new comments/posts
+  can appear while the feed is open.
+*/
+
+setInterval(
+  async function(){
+
+    const feed =
+      document.getElementById(
+        "feed"
+      );
+
+
+    if(
+      feed &&
+      feed.style.display !== "none"
+    ){
+
+      await loadOnlinePosts();
+
+    }
+
+  },
+  60000
+);
+
+
+/*
+  Refresh the gallery every minute
+  while the Gallery page is open.
+*/
+
+setInterval(
+  async function(){
+
+    const gallery =
+      document.getElementById(
+        "gallery"
+      );
+
+
+    if(
+      gallery &&
+      gallery.style.display !== "none"
+    ){
+
+      await renderGallery();
+
+    }
+
+  },
+  60000
+);
+
+</script>
+
+</body>
+</html>
