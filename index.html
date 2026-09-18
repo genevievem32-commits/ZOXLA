@@ -1427,7 +1427,7 @@ function renderPosts(){
                 id="comment-${index}"
                 placeholder="Write a comment..."
                 maxlength="500"
-                onkeydown="if(event.key==='Enter') commentPost(${index})"
+                onkeydown="if(event.key==='Enter'){event.preventDefault();commentPost(${index})}"
               >
 
 
