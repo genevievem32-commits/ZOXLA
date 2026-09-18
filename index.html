@@ -1894,27 +1894,13 @@ setInterval(
   while the Gallery page is open.
 */
 
-setInterval(
-  async function(){
+setInterval(function(){
 
-    const gallery =
-      document.getElementById(
-        "gallery"
-      );
+  if(posts.length){
+    renderPosts();
+  }
 
-
-    if(
-      gallery &&
-      gallery.style.display !== "none"
-    ){
-
-      await renderGallery();
-
-    }
-
-  },
-  60000
-);
+}, 1000);
 
 </script>
 
